@@ -1,399 +1,236 @@
 <!doctype html>
 <html lang="vi">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bài kiểm tra trắc nghiệm Tin học 6</title>
-<style>
-  :root {
-    --blue: #2563eb; --blue-dark: #1d4ed8; --ink: #172033;
-    --muted: #5b6475; --line: #dbe3ef; --bg: #f3f7fc;
-    --good: #15803d; --bad: #b91c1c; --warn: #b45309;
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Arial, sans-serif; }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 22px 16px 44px; }
-  header { background: linear-gradient(135deg,#1d4ed8,#60a5fa); color: white; padding: 24px; border-radius: 18px; box-shadow: 0 8px 24px #1d4ed822; }
-  header h1 { margin: 0 0 6px; font-size: clamp(1.45rem,3vw,2rem); line-height: 1.25; }
-  header p { margin: 4px 0; opacity: .96; }
-  .pill { display: inline-block; background: #ffffff26; border: 1px solid #ffffff55; border-radius: 999px; padding: 4px 10px; font-size: .9rem; margin-top: 10px; }
-  .panel { background: white; border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-top: 16px; box-shadow: 0 3px 12px #0f172a08; }
-  h2 { font-size: 1.15rem; margin: 0 0 14px; }
-  .student-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
-  label.field { display: block; font-weight: 650; }
-  input[type="text"] { display: block; width: 100%; margin-top: 6px; border: 1px solid #b9c6d8; border-radius: 10px; padding: 11px 12px; font: inherit; background: #fff; }
-  input:focus-visible, button:focus-visible, .option:focus-within { outline: 3px solid #93c5fd; outline-offset: 2px; }
-  .status { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
-  .time { font-weight: 800; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
-  .time.warning { color: var(--bad); }
-  .progress-track { height: 10px; background: #e5edf8; border-radius: 99px; overflow: hidden; margin-top: 10px; }
-  .progress-bar { height: 100%; width: 100%; background: var(--blue); transition: width .3s linear, background .3s; }
-  .progress-label { color: var(--muted); font-size: .92rem; margin-top: 5px; }
-  .question { border: 1px solid var(--line); border-radius: 14px; padding: 17px; margin: 14px 0; }
-  .q-title { margin: 0 0 12px; font-weight: 750; }
-  .q-number { color: var(--blue); }
-  .options { display: grid; gap: 8px; }
-  .option { display: flex; gap: 10px; align-items: flex-start; border: 1px solid #d9e2ef; border-radius: 11px; padding: 10px 12px; cursor: pointer; transition: background .15s,border .15s; }
-  .option:hover { background: #f5f8ff; border-color: #9ab8f5; }
-  .option:has(input:checked) { background: #eff6ff; border-color: var(--blue); }
-  .option input { margin-top: 5px; accent-color: var(--blue); flex: 0 0 auto; }
-  .essay-input {
-    display: block;
-    width: 100%;
-    min-height: 4.8em;
-    margin-top: 8px;
-    padding: 10px 12px;
-    border: 1px solid #d9e2ef;
-    border-radius: 11px;
-    font: inherit;
-    line-height: 1.55;
-    resize: vertical;
-    background: #fff;
-  }
-  .essay-input:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; }
-  button { border: 0; border-radius: 11px; padding: 12px 17px; font: inherit; font-weight: 750; cursor: pointer; }
-  .primary { background: var(--blue); color: white; }
-  .primary:hover { background: var(--blue-dark); }
-  .secondary { background: #e8eef8; color: #1e293b; }
-  button:disabled { opacity: .5; cursor: not-allowed; }
-  .hint { color: var(--muted); font-size: .92rem; margin: 10px 0 0; }
-  .result-row:last-child { border-bottom: 0; }
-  [hidden] { display: none !important; }
-  footer { color: var(--muted); font-size: .85rem; text-align: center; margin-top: 22px; }
-  @media (max-width: 620px) { .student-grid { grid-template-columns: 1fr; } .panel { padding: 15px; } header { padding: 20px; } .status { grid-template-columns: 1fr; } }
-  @media print { body { background: white; } header { background: white; color: black; box-shadow: none; padding: 0; } .panel, .question { box-shadow: none; break-inside: avoid; } .actions, footer, #identityPanel, #timerPanel { display: none !important; } }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bài kiểm tra Tin học 6</title>
+  <style>
+    :root { --blue: #2563eb; --blue-dark: #1d4ed8; --bg: #f4f7fb; --card: #ffffff; --text: #172033; --muted: #58657d; --line: #dfe7f4; --good: #15803d; --bad: #b91c1c; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); }
+    .wrap { max-width: 860px; margin: 32px auto; padding: 0 16px 40px; }
+    .header { background: linear-gradient(135deg, var(--blue), #60a5fa); color: white; border-radius: 18px; padding: 28px 22px; box-shadow: 0 8px 24px rgba(37,99,235,0.2); }
+    h1 { margin: 0 0 8px; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+    .meta { margin: 0; opacity: 0.96; }
+    .pill { display: inline-block; margin-top: 12px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.45); }
+    .card { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; box-shadow: 0 3px 12px rgba(15,23,42,0.05); }
+    .score-line { font-weight: 700; margin-bottom: 14px; color: var(--muted); }
+    .question-box { border: 1px solid var(--line); border-radius: 12px; background: #fbfdff; padding: 18px; margin-top: 10px; }
+    .question-title { font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
+    .answer-btn { display: block; width: 100%; padding: 12px 14px; margin: 10px 0; border: 1px solid #d5deef; border-radius: 10px; background: #fff; font-size: 1rem; text-align: left; cursor: pointer; }
+    .answer-btn:hover { border-color: #9db7f3; background: #f7faff; }
+    .answer-btn.correct { background: #e7f8ee; border-color: #4fc679; color: var(--good); }
+    .answer-btn.wrong { background: #fdecec; border-color: #f39a9a; color: var(--bad); }
+    .answer-btn:disabled { cursor: default; opacity: 1; }
+    .controls { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
+    button { border: none; border-radius: 10px; padding: 12px 16px; font-size: 1rem; font-weight: 700; cursor: pointer; }
+    .primary { background: var(--blue); color: white; }
+    .secondary { background: #edf3ff; color: var(--text); }
+    .status { margin-top: 14px; min-height: 24px; font-weight: 700; }
+    .status.good { color: var(--good); }
+    .status.bad { color: var(--bad); }
+    .result-box { margin-top: 16px; padding: 14px 16px; border-radius: 12px; background: #eef6ff; border: 1px solid #bfd3ff; }
+    @media (max-width: 600px) { .card { padding: 16px; } .controls { flex-direction: column; } button { width: 100%; } }
+  </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>BÀI KIỂM TRA TIN HỌC 6</h1>
-    <p>Giữa học kỳ I · Năm học 2026–2027</p>
-    <p>Bộ sách: Kết nối tri thức với cuộc sống</p>
-    <span class="pill">10 câu trắc nghiệm + 4 câu tự luận · 10 điểm · 45 phút</span>
-  </header>
+  <div class="wrap">
+    <header class="header">
+      <h1>BÀI KIỂM TRA GIỮA HỌC KÌ I - TIN HỌC 6</h1>
+      <p class="meta">Năm học 2026–2027</p>
+      <p class="meta">Bộ sách: Kết nối tri thức với cuộc sống</p>
+      <span class="pill">Trắc nghiệm · xáo trộn câu hỏi + đáp án · lưu tiến độ</span>
+    </header>
 
-  <section class="panel" id="identityPanel">
-    <h2>Thông tin học sinh</h2>
-    <div class="student-grid">
-      <label class="field">Họ và tên
-        <input id="studentName" type="text" placeholder="Ví dụ: Nguyễn Văn An" autocomplete="name" maxlength="100" required>
-      </label>
-      <label class="field">Lớp
-        <input id="studentClass" type="text" placeholder="Ví dụ: 6A1" maxlength="30" required>
-      </label>
-    </div>
-    <p class="hint">Hãy điền họ tên và lớp trước khi làm bài. Mỗi câu chỉ chọn một đáp án.</p>
-  </section>
-
-  <section class="panel" id="timerPanel">
-    <div class="status">
-      <div>
-        <h2 style="margin-bottom:2px">Thời gian làm bài</h2>
-        <div class="progress-label" id="answeredLabel">Đã trả lời 0/10 câu</div>
+    <div class="card">
+      <div id="scoreLine" class="score-line">Điểm: 0/0</div>
+      <div id="questionWrap"></div>
+      <div id="status" class="status"></div>
+      <div class="controls">
+        <button id="nextBtn" class="primary" style="display:none;">Câu tiếp theo</button>
+        <button id="saveBtn" class="secondary">Lưu JSON</button>
+        <button id="resetBtn" class="secondary">Reset</button>
       </div>
-      <div class="time" id="timeText" aria-live="polite">45:00</div>
+      <div id="resultBox" class="result-box" style="display:none;"></div>
     </div>
-    <div class="progress-track" role="progressbar" aria-label="Thời gian còn lại" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" id="timeProgress">
-      <div class="progress-bar" id="timeBar"></div>
-    </div>
-  </section>
+  </div>
 
-  <form id="quizForm" class="panel">
-    <h2>Phần trắc nghiệm</h2>
-    <div id="questions"></div>
+  <script>
+    const STORAGE_KEY = 'quiz_state_l6new';
+    const QUESTIONS = [
+      { question: 'Thông tin là gì?', answers: ['Những con số, kí hiệu được ghi lại trên giấy', 'Điều đem lại hiểu biết cho con người về sự vật, sự việc', 'Chỉ là những dữ liệu lưu trong máy tính', 'Các thiết bị dùng để lưu trữ dữ liệu'], correct: 1 },
+      { question: 'Trong các ví dụ sau, đâu là vật mang tin?', answers: ['Nhiệt độ 30°C', 'Dự báo trời mưa', 'Tờ giấy ghi thời khóa biểu', 'Ý định mang áo mưa'], correct: 2 },
+      { question: 'Hoạt động nào sau đây là xử lý thông tin?', answers: ['Nhìn thấy trời nhiều mây', 'Nghe tiếng chuông báo giờ', 'So sánh dự báo thời tiết với kế hoạch đi chơi để quyết định mang áo mưa', 'Ghi lại một con số mà không xem xét ý nghĩa'], correct: 2 },
+      { question: 'Trong hệ thống máy tính, dữ liệu được đưa vào để máy tính xử lí gọi là gì?', answers: ['Đầu vào', 'Đầu ra', 'Kết quả in', 'Thiết bị kết nối'], correct: 0 },
+      { question: 'Đơn vị nhỏ nhất dùng để biểu diễn thông tin trong máy tính theo nội dung đã học là gì?', answers: ['Byte', 'Bit', 'Kilobyte', 'Megabyte'], correct: 1 },
+      { question: 'Một byte gồm bao nhiêu bit?', answers: ['2 bit', '4 bit', '8 bit', '16 bit'], correct: 2 },
+      { question: 'Đơn vị nào sau đây có dung lượng lớn nhất?', answers: ['1 KB', '1 byte', '1 MB', '1 GB'], correct: 3 },
+      { question: 'Mạng máy tính là gì?', answers: ['Một máy tính có màn hình lớn', 'Các thiết bị được kết nối để trao đổi dữ liệu và chia sẻ tài nguyên', 'Một phần mềm dùng để gõ văn bản', 'Một thiết bị chỉ dùng để in tài liệu'], correct: 1 },
+      { question: 'Thiết bị nào thường được dùng để kết nối các thiết bị trong mạng không dây?', answers: ['Loa', 'Máy quét', 'Điểm truy cập Wi-Fi', 'Máy chiếu'], correct: 2 },
+      { question: 'Phát biểu nào đúng về Internet?', answers: ['Internet chỉ kết nối các máy tính trong một phòng', 'Internet là mạng kết nối các mạng máy tính trên phạm vi toàn cầu', 'Internet chỉ dùng để chơi trò chơi', 'Mọi thông tin trên Internet đều chính xác'], correct: 1 }
+    ];
 
-    <h2 style="margin-top:24px">Phần II. Tự luận (5,0 điểm)</h2>
-    <p class="hint">Em nhập câu trả lời vào từng ô. Phần tự luận sẽ do giáo viên chấm, hệ thống không tự động cho điểm phần này.</p>
-    <div class="question essay-question">
-      <label class="q-title" for="essay11">Câu 11 (1,0 điểm). Hãy nêu các hoạt động cơ bản của quá trình xử lí thông tin. Lấy một ví dụ trong đời sống và chỉ ra hoạt động thu nhận thông tin, xử lí thông tin và kết quả.</label>
-      <textarea id="essay11" class="essay-input" rows="3" placeholder="Nhập câu trả lời của em..."></textarea>
-    </div>
-    <div class="question essay-question">
-      <label class="q-title" for="essay12">Câu 12 (1,0 điểm). Vì sao máy tính biểu diễn thông tin bằng dãy bit? Nêu giá trị có thể có của một bit và mối quan hệ giữa bit với byte.</label>
-      <textarea id="essay12" class="essay-input" rows="3" placeholder="Nhập câu trả lời của em..."></textarea>
-    </div>
-    <div class="question essay-question">
-      <label class="q-title" for="essay13">Câu 13 (1,5 điểm). Bạn An nói: “Mạng máy tính và Internet là một”. Em có đồng ý không? Hãy giải thích ngắn gọn sự khác nhau giữa mạng máy tính và Internet, đồng thời nêu một lợi ích của mạng máy tính.</label>
-      <textarea id="essay13" class="essay-input" rows="3" placeholder="Nhập câu trả lời của em..."></textarea>
-    </div>
-    <div class="question essay-question">
-      <label class="q-title" for="essay14">Câu 14 (1,5 điểm). Em cần tìm thông tin về một địa danh để làm bài tập. Hãy nêu ba việc nên làm để sử dụng Internet hiệu quả, có trách nhiệm và hạn chế nhận thông tin sai lệch.</label>
-      <textarea id="essay14" class="essay-input" rows="3" placeholder="Nhập câu trả lời của em..."></textarea>
-    </div>
-
-    <div class="actions">
-      <button class="primary" type="submit" id="submitBtn">Nộp bài</button>
-    </div>
-    <p class="hint">Khi nhấn “Nộp bài”, hệ thống lưu họ tên, lớp và điểm vào tệp JSON. Hộp thoại lưu ưu tiên mở thư mục Documents (Windows). Trên Linux, vị trí mở đầu phụ thuộc trình duyệt; nếu cần, hãy chọn Home.</p>
-  </form>
-  <footer>Đề thi trắc nghiệm tương tác · Bài làm chỉ được lưu trên thiết bị khi học sinh chọn lưu.</footer>
-</div>
-
-<script>
-// Dán URL Web app của Google Apps Script vào giữa hai dấu nháy.
-const QUESTIONS = [
-  { question: "Thông tin là gì?", options: [
-    "Những con số, kí hiệu được ghi lại trên giấy.",
-    "Điều đem lại hiểu biết cho con người về sự vật, sự việc.",
-    "Chỉ là những dữ liệu lưu trong máy tính.",
-    "Các thiết bị dùng để lưu trữ dữ liệu."
-  ], answer: 1, points: 0.5 },
-  { question: "Trong các ví dụ sau, đâu là vật mang tin?", options: [
-    "Nhiệt độ 30°C.",
-    "Dự báo trời mưa.",
-    "Tờ giấy ghi thời khóa biểu.",
-    "Ý định mang áo mưa."
-  ], answer: 2, points: 0.5 },
-  { question: "Hoạt động nào sau đây là xử lí thông tin?", options: [
-    "Nhìn thấy trời nhiều mây.",
-    "Nghe tiếng chuông báo giờ.",
-    "So sánh dự báo thời tiết với kế hoạch đi chơi để quyết định mang áo mưa.",
-    "Ghi lại một con số mà không xem xét ý nghĩa."
-  ], answer: 2, points: 0.5 },
-  { question: "Trong hệ thống máy tính, dữ liệu được đưa vào để máy tính xử lí gọi là gì?", options: [
-    "Đầu vào.",
-    "Đầu ra.",
-    "Kết quả in.",
-    "Thiết bị kết nối."
-  ], answer: 0, points: 0.5 },
-  { question: "Đơn vị nhỏ nhất dùng để biểu diễn thông tin trong máy tính theo nội dung đã học là gì?", options: [
-    "Byte.",
-    "Bit.",
-    "Kilobyte (KB).",
-    "Megabyte (MB)."
-  ], answer: 1, points: 0.5 },
-  { question: "Một byte gồm bao nhiêu bit?", options: [
-    "2 bit.",
-    "4 bit.",
-    "8 bit.",
-    "16 bit."
-  ], answer: 2, points: 0.5 },
-  { question: "Đơn vị nào sau đây có dung lượng lớn nhất?", options: [
-    "1 KB.",
-    "1 byte.",
-    "1 MB.",
-    "1 GB."
-  ], answer: 3, points: 0.5 },
-  { question: "Mạng máy tính là gì?", options: [
-    "Một máy tính có màn hình lớn.",
-    "Các thiết bị được kết nối để trao đổi dữ liệu và chia sẻ tài nguyên.",
-    "Một phần mềm dùng để gõ văn bản.",
-    "Một thiết bị chỉ dùng để in tài liệu."
-  ], answer: 1, points: 0.5 },
-  { question: "Thiết bị nào thường được dùng để kết nối các thiết bị trong mạng không dây?", options: [
-    "Loa.",
-    "Máy quét.",
-    "Điểm truy cập Wi-Fi (Access Point).",
-    "Máy chiếu."
-  ], answer: 2, points: 0.5 },
-  { question: "Phát biểu nào đúng về Internet?", options: [
-    "Internet chỉ kết nối các máy tính trong một phòng.",
-    "Internet là mạng kết nối các mạng máy tính trên phạm vi toàn cầu.",
-    "Internet chỉ dùng để chơi trò chơi.",
-    "Mọi thông tin trên Internet đều chính xác."
-  ], answer: 1, points: 0.5 }
-];
-
-const DURATION_SECONDS = 45 * 60;
-let remainingSeconds = DURATION_SECONDS;
-let timerId = null;
-let submitted = false;
-let submittedAt = null;
-let finalScore = 0;
-let finalAnswers = [];
-
-const $ = (id) => document.getElementById(id);
-const questionsEl = $("questions");
-const form = $("quizForm");
-
-function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-  }[c]));
-}
-
-function renderQuestions() {
-  questionsEl.innerHTML = QUESTIONS.map((q, qi) => `
-    <fieldset class="question" style="min-width:0" id="question-${qi}">
-      <legend class="q-title"><span class="q-number">Câu ${qi + 1}.</span> ${escapeHtml(q.question)}</legend>
-      <div class="options">
-        ${q.options.map((option, oi) => `
-          <label class="option">
-            <input type="radio" name="q${qi}" value="${oi}" aria-label="Câu ${qi + 1}, đáp án ${String.fromCharCode(65 + oi)}">
-            <span><strong>${String.fromCharCode(65 + oi)}.</strong> ${escapeHtml(option)}</span>
-          </label>
-        `).join("")}
-      </div>
-    </fieldset>
-  `).join("");
-  questionsEl.addEventListener("change", updateAnsweredCount);
-}
-function updateAnsweredCount() {
-  const count = QUESTIONS.reduce((n, q, i) => n + (form.querySelector(`input[name="q${i}"]:checked`) ? 1 : 0), 0);
-  $("answeredLabel").textContent = `Đã trả lời ${count}/${QUESTIONS.length} câu`;
-}
-function updateTimer() {
-  const mm = Math.floor(remainingSeconds / 60).toString().padStart(2, "0");
-  const ss = (remainingSeconds % 60).toString().padStart(2, "0");
-  $("timeText").textContent = `${mm}:${ss}`;
-  const pct = Math.max(0, remainingSeconds / DURATION_SECONDS * 100);
-  $("timeBar").style.width = pct + "%";
-  $("timeProgress").setAttribute("aria-valuenow", Math.round(pct));
-  if (remainingSeconds <= 300) {
-    $("timeText").classList.add("warning");
-    $("timeBar").style.background = "#dc2626";
-  }
-  if (remainingSeconds <= 0) {
-    clearInterval(timerId);
-    submitQuiz(true);
-  }
-}
-function cleanFilenamePart(value) {
-  return String(value || "").trim()
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .replace(/đ/g, "d").replace(/Đ/g, "D")
-    .replace(/[^a-zA-Z0-9_-]+/g, "_")
-    .replace(/^_+|_+$/g, "");
-}
-function getStudentInfo() {
-  return {
-    hoTen: $("studentName").value.trim(),
-    lop: $("studentClass").value.trim()
-  };
-}
-function buildResultData() {
-  const info = getStudentInfo();
-  const tongDiemTracNghiem = Number(QUESTIONS.reduce((sum, q) => sum + q.points, 0).toFixed(2));
-  const chiTietTracNghiem = QUESTIONS.map((q, i) => {
-    const answer = finalAnswers[i];
-    const selectedIndex = answer.chon;
-    return {
-      cauSo: i + 1,
-      noiDung: q.question,
-      dapAnDaChon: selectedIndex === null ? null : {
-        kyHieu: String.fromCharCode(65 + selectedIndex),
-        noiDung: q.options[selectedIndex]
-      },
-      dapAnDung: {
-        kyHieu: String.fromCharCode(65 + q.answer),
-        noiDung: q.options[q.answer]
-      },
-      trangThai: answer.dung ? "dung" : (selectedIndex === null ? "chua_tra_loi" : "sai"),
-      dung: answer.dung,
-      diemDat: answer.dung ? q.points : 0,
-      diemToiDa: q.points
-    };
-  });
-  const danhSachCauDung = chiTietTracNghiem.filter(q => q.dung);
-  const danhSachCauSai = chiTietTracNghiem.filter(q => !q.dung);
-  const tongSoCauDung = danhSachCauDung.length;
-  const tongSoCauSai = danhSachCauSai.length;
-  return {
-    hoTen: info.hoTen,
-    lop: info.lop,
-    diem: Number(finalScore.toFixed(2)),
-    tongDiem: tongDiemTracNghiem,
-    diemTracNghiem: Number(finalScore.toFixed(2)),
-    tongDiemTracNghiem,
-    tongSoCauDung,
-    tongSoCauSai,
-    danhSachCauDung,
-    danhSachCauSai,
-    chiTietTracNghiem,
-    cauTuLuan: {
-      cau11: {
-        deBai: "Hãy nêu các hoạt động cơ bản của quá trình xử lí thông tin. Lấy một ví dụ trong đời sống và chỉ ra hoạt động thu nhận thông tin, xử lí thông tin và kết quả.",
-        traLoi: $("essay11").value.trim()
-      },
-      cau12: {
-        deBai: "Vì sao máy tính biểu diễn thông tin bằng dãy bit? Nêu giá trị có thể có của một bit và mối quan hệ giữa bit với byte.",
-        traLoi: $("essay12").value.trim()
-      },
-      cau13: {
-        deBai: "Bạn An nói: ‘Mạng máy tính và Internet là một’. Em có đồng ý không? Hãy giải thích ngắn gọn sự khác nhau giữa mạng máy tính và Internet, đồng thời nêu một lợi ích của mạng máy tính.",
-        traLoi: $("essay13").value.trim()
-      },
-      cau14: {
-        deBai: "Em cần tìm thông tin về một địa danh để làm bài tập. Hãy nêu ba việc nên làm để sử dụng Internet hiệu quả, có trách nhiệm và hạn chế nhận thông tin sai lệch.",
-        traLoi: $("essay14").value.trim()
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
       }
-    },
-    thoiGianNop: submittedAt
-  };
-}
-function submitQuiz(auto = false) {
-  if (submitted) return;
-  const info = getStudentInfo();
-  if (!auto && (!info.hoTen || !info.lop)) {
-    alert("Em hãy nhập đầy đủ họ tên và lớp trước khi nộp bài.");
-    (!info.hoTen ? $("studentName") : $("studentClass")).focus();
-    return;
-  }
-  if (!auto && !confirm("Em chắc chắn muốn nộp bài? Sau khi nộp sẽ không thể sửa đáp án.")) return;
-  submitted = true;
-  submittedAt = new Date().toISOString();
-  clearInterval(timerId);
-  finalAnswers = QUESTIONS.map((q, i) => {
-    const selected = form.querySelector(`input[name="q${i}"]:checked`);
-    const choice = selected ? Number(selected.value) : null;
-    return { chon: choice, dung: choice === q.answer };
-  });
-  finalScore = finalAnswers.reduce((sum, a, i) => sum + (a.dung ? QUESTIONS[i].points : 0), 0);
-  form.querySelectorAll("input, textarea").forEach(input => input.disabled = true);
-  $("submitBtn").disabled = true;
-  saveResult();
-}
-async function saveResult() {
-  if (!submitted) return;
-  const info = getStudentInfo();
-  const baseName = `${cleanFilenamePart(info.hoTen) || "hoc_sinh"}_${cleanFilenamePart(info.lop) || "chua_ro_lop"}`;
-  const data = buildResultData();
-  const content = JSON.stringify(data, null, 2);
-  const blob = new Blob([content], { type: "application/json;charset=utf-8" });
-
-  // Người dùng chọn thư mục lưu; hãy chọn ổ D: trong hộp thoại nếu muốn lưu vào ổ D:.
-  if ("showDirectoryPicker" in window) {
-    try {
-      // Trình duyệt không cung cấp API để dò hệ điều hành/thư mục tuyệt đối.
-      // startIn: "documents" là vị trí gợi ý chuẩn; trên Linux, nếu không có Documents,
-      // trình duyệt sẽ dùng vị trí khả dụng gần nhất. Home không thể được ép buộc từ trang web.
-      const dirHandle = await window.showDirectoryPicker({
-        mode: "readwrite",
-        id: "quiz-json-save",
-        startIn: "documents"
-      });
-      const fileHandle = await dirHandle.getFileHandle(`${baseName}.json`, { create: true });
-      const writable = await fileHandle.createWritable();
-      await writable.write(blob);
-      await writable.close();
-      alert(`Đã lưu bài làm: ${baseName}.json`);
-      return;
-    } catch (err) {
-      if (err && err.name === "AbortError") return;
-      console.warn("Không dùng được hộp thoại chọn thư mục; chuyển sang tải xuống.", err);
+      return copy;
     }
-  }
 
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url; a.download = `${baseName}.json`;
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1500);
-  alert("Trình duyệt không hỗ trợ chọn thư mục trực tiếp. Tệp JSON đã được yêu cầu tải xuống; hãy chuyển tệp đến Documents (Windows) hoặc Home (Linux) nếu cần.");
-}
+    function buildQuestionSet() {
+      return shuffleArray(QUESTIONS).map(q => {
+        const answerItems = shuffleArray(q.answers.map((text, index) => ({ text, originalIndex: index })));
+        const correct = answerItems.findIndex(item => item.originalIndex === q.correct);
+        return {
+          question: q.question,
+          answers: answerItems.map(item => item.text),
+          correct,
+          userAnswer: null,
+          answered: false,
+          explanation: 'Đáp án đúng là: ' + q.answers[q.correct]
+        };
+      });
+    }
 
-renderQuestions();
-updateTimer();
-timerId = setInterval(() => {
-  if (remainingSeconds > 0) remainingSeconds--;
-  updateTimer();
-}, 1000);
-form.addEventListener("submit", event => {
-  event.preventDefault();
-  submitQuiz(false);
-});
-</script>
+    function loadState() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return { questions: buildQuestionSet(), index: 0, score: 0, finished: false };
+      try {
+        const parsed = JSON.parse(saved);
+        if (!Array.isArray(parsed.questions) || parsed.questions.length === 0) return { questions: buildQuestionSet(), index: 0, score: 0, finished: false };
+        return parsed;
+      } catch {
+        return { questions: buildQuestionSet(), index: 0, score: 0, finished: false };
+      }
+    }
+
+    function saveState(state) { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+    function renderQuestion(state) {
+      const q = state.questions[state.index];
+      const scoreLine = document.getElementById('scoreLine');
+      const questionWrap = document.getElementById('questionWrap');
+      const status = document.getElementById('status');
+      const nextBtn = document.getElementById('nextBtn');
+      const resultBox = document.getElementById('resultBox');
+
+      if (!q) {
+        questionWrap.innerHTML = '<div class="question-box"><div class="question-title">Bạn đã hoàn thành bài kiểm tra.</div></div>';
+        scoreLine.textContent = `Điểm: ${state.score}/${state.questions.length}`;
+        status.className = 'status';
+        status.textContent = state.score === state.questions.length ? 'Tuyệt vời! Bạn làm đúng tất cả.' : 'Hãy xem lại các câu sai và làm lại nếu muốn.';
+        nextBtn.style.display = 'none';
+        resultBox.style.display = 'block';
+        resultBox.innerHTML = `Kết quả cuối: ${state.score}/${state.questions.length} câu đúng.`;
+        return;
+      }
+
+      scoreLine.textContent = `Điểm: ${state.score}/${state.questions.length}`;
+      questionWrap.innerHTML = `
+        <div class="question-box">
+          <div class="question-title">Câu ${state.index + 1}: ${q.question}</div>
+          ${q.answers.map((answer, idx) => {
+            let cls = 'answer-btn';
+            if (q.answered) {
+              cls += ' disabled';
+              if (idx === q.correct) cls += ' correct';
+              if (q.userAnswer === idx && idx !== q.correct) cls += ' wrong';
+            }
+            return `<button class="${cls}" data-index="${idx}" ${q.answered ? 'disabled' : ''}>${String.fromCharCode(65 + idx)}. ${answer}</button>`;
+          }).join('')}
+        </div>
+      `;
+
+      questionWrap.querySelectorAll('.answer-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (q.answered) return;
+          q.userAnswer = Number(btn.dataset.index);
+          q.answered = true;
+          if (q.userAnswer === q.correct) {
+            state.score += 1;
+            status.textContent = 'Đúng rồi!';
+            status.className = 'status good';
+          } else {
+            status.textContent = 'Sai rồi! ' + q.explanation;
+            status.className = 'status bad';
+          }
+          saveState(state);
+          renderQuestion(state);
+        });
+      });
+
+      if (q.answered) {
+        status.textContent = q.userAnswer === q.correct ? 'Đúng rồi!' : 'Sai rồi! ' + q.explanation;
+        status.className = q.userAnswer === q.correct ? 'status good' : 'status bad';
+        nextBtn.style.display = 'inline-block';
+      } else {
+        status.textContent = '';
+        status.className = 'status';
+        nextBtn.style.display = 'none';
+      }
+
+      resultBox.style.display = 'none';
+    }
+
+    function nextQuestion() {
+      const state = loadState();
+      if (state.index < state.questions.length - 1) {
+        state.index += 1;
+        saveState(state);
+        renderQuestion(state);
+      } else {
+        state.finished = true;
+        saveState(state);
+        renderQuestion(state);
+      }
+    }
+
+    function resetQuiz() {
+      if (!confirm('Bạn có muốn reset toàn bộ tiến độ?')) return;
+      const fresh = { questions: buildQuestionSet(), index: 0, score: 0, finished: false };
+      localStorage.removeItem(STORAGE_KEY);
+      saveState(fresh);
+      renderQuestion(fresh);
+    }
+
+    async function saveQuizJson() {
+      const state = loadState();
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const filename = 'quiz_l6new.json';
+      if (window.showDirectoryPicker) {
+        try {
+          const dirHandle = await window.showDirectoryPicker({ mode: 'readwrite', startIn: 'desktop' });
+          const fileHandle = await dirHandle.getFileHandle(filename, { create: true });
+          const writable = await fileHandle.createWritable();
+          await writable.write(blob);
+          await writable.close();
+          alert('Đã lưu JSON vào thư mục đã chọn.');
+          return;
+        } catch (err) {
+          if (err && err.name === 'AbortError') return;
+          console.warn('Không thể chọn thư mục trực tiếp, sẽ tải xuống.', err);
+        }
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+      alert('Đã tải xuống tệp JSON. Nếu bạn đang trên Windows hoặc Linux, hãy lưu vào Desktop hoặc thư mục mong muốn.');
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+    document.getElementById('saveBtn').addEventListener('click', saveQuizJson);
+    document.getElementById('resetBtn').addEventListener('click', resetQuiz);
+
+    const initial = loadState();
+    saveState(initial);
+    renderQuestion(initial);
+  </script>
 </body>
 </html>
